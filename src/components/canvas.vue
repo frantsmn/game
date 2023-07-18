@@ -4,13 +4,16 @@
 
 <template>
   <section class="canvas">
+    тут буде тигра
     <canvas width="1280" height="640" />
   </section>
 </template>
 
 <style lang="scss" scoped>
 .canvas {
+  margin-top: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   max-width: 1280px;
   max-height: 640px;

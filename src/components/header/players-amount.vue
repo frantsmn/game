@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <div class="players-amount">
-    Players: <span class="players-amount__number">{{ props.amount }}</span>
+    <span>Players:</span> <span class="players-amount__number">{{ props.amount }}</span>
   </div>
 </template>
 

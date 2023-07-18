@@ -5,25 +5,33 @@ import {io} from 'socket.io-client'
 const URL = process.env.NODE_ENV === 'production' ? undefined : 'http://localhost:3000'
 
 export const state = reactive({
+    uid: undefined,
     connected: false,
+
+    players: [],
     // moveEvents: [],
 })
+
 export const socket = io(URL)
 
 socket.on('connect', () => {
+    state.uid = socket?.id ?? undefined
     state.connected = true
-    state.playersAmount = state.playersAmount + 1
+
     console.info('[socket] ✅ Connected')
 })
 
 socket.on('disconnect', () => {
     state.connected = false
-    state.playersAmount = state.playersAmount - 1
+    state.players = state.players.filter(player => player.uid !== state.uid)
+
     console.info('[socket] ❌ Disconnected')
 })
 
-socket.on('stateUpdate', ({playersAmount}) => {
-    state.playersAmount = playersAmount
+socket.on('stateUpdate', ({players}) => {
+    state.players = players || []
+
+    console.info('[socket] ⬆️ stateUpdate', players)
 })
 
 // socket.on('move', (...args) => {

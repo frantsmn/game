@@ -8,10 +8,10 @@ import MenuBar from '@/components/header/menu-bar.vue'
 <template>
   <header class="header">
     <div class="header__left">
-      <ConnectionIndicator :is-connected="state.connected" />
-      <PlayersAmount :amount="state.playersAmount" />
+      <PlayersAmount :amount="state.players.length" />
     </div>
     <div class="header__right">
+      <ConnectionIndicator :is-connected="state.connected" />
       <MenuBar />
     </div>
   </header>
@@ -25,14 +25,13 @@ import MenuBar from '@/components/header/menu-bar.vue'
   gap: 10px;
   padding: 10px;
   background-color: rgba(26, 24, 24, 0.4);
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
+  height: 60px;
 
-  &__left {
+  &__left, &__right {
     line-height: initial;
     display: flex;
+    align-items: center;
     gap: 15px;
   }
 }
