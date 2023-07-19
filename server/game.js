@@ -31,7 +31,9 @@ export const game = (io) => {
         })
 
         socket.on('syncPosition', ({x, y}) => {
-            io.emit('syncPosition', {uid: socket.id, x, y})
+            // Синкаем ТОЛЬКО позиции противников
+            // Свою перезаписывать по ответу от сервера не стоит, т.к. будет лаг
+            socket.broadcast.emit('syncPosition', {uid: socket.id, x, y})
         })
 
         socket.on('disconnect', () => {

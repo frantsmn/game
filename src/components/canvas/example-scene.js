@@ -57,7 +57,7 @@ export const useExampleScene = (socket) => {
                 }
                 const {x, y} = this.players[socket.id]
                 socket.emit('syncPosition', {x, y})
-            }, 500)
+            }, 300)
 
             socket.on('syncPosition', ({uid, x, y}) => {
                 console.log(`⚡Sync ${uid} position!`)
