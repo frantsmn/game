@@ -1,6 +1,6 @@
-# Виталя ГЕЙминг
+# Game
 
-### [Глянуть Стейдж](https://game-nuga.onrender.com/)
+### [Стейдж](https://game-nuga.onrender.com/)
 
 ## Project Setup
 

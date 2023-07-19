@@ -1,12 +1,12 @@
 <script setup>
-// шо?
+import {onMounted} from 'vue'
+import {runGame} from '@/components/canvas/game.js'
+
+onMounted(runGame)
 </script>
 
 <template>
-  <section class="canvas">
-    тут буде тигра
-    <canvas width="1280" height="640" />
-  </section>
+  <section id="canvas" class="canvas" />
 </template>
 
 <style lang="scss" scoped>

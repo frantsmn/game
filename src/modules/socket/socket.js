@@ -9,10 +9,11 @@ export const state = reactive({
     connected: false,
 
     players: [],
-    // moveEvents: [],
 })
 
-export const socket = io(URL)
+export const socket = io(URL, {
+    autoConnect: false
+})
 
 socket.on('connect', () => {
     state.uid = socket?.id ?? undefined
@@ -21,19 +22,15 @@ socket.on('connect', () => {
     console.info('[socket] ✅ Connected')
 })
 
-socket.on('disconnect', () => {
-    state.connected = false
-    state.players = state.players.filter(player => player.uid !== state.uid)
-
-    console.info('[socket] ❌ Disconnected')
-})
-
 socket.on('stateUpdate', ({players}) => {
     state.players = players || []
 
     console.info('[socket] ⬆️ stateUpdate', players)
 })
 
-// socket.on('move', (...args) => {
-//     state.moveEvents.push(args)
-// })
+socket.on('disconnect', () => {
+    state.connected = false
+    state.players = state.players.filter(player => player.uid !== state.uid)
+
+    console.info('[socket] ❌ Disconnected')
+})

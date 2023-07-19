@@ -7,7 +7,7 @@ const playerName = ref('')
 
 const applyName = () => {
   socket.emit('updateName', get(playerName))
-  document.title = `Виталя Гейминг • ${get(playerName)}`
+  document.title = `Game • ${get(playerName)}`
 }
 </script>
 
