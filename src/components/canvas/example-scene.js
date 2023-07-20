@@ -38,8 +38,7 @@ export const useExampleScene = (socket) => {
                     }
                     this.players[player.uid].setCollideWorldBounds(true)
                     if (!this.keyboards[player.uid]) {
-                        const isEmit = socket.id === player.uid
-                        this.keyboards[player.uid] = useKeyboard(socket, player.uid, isEmit)
+                        this.keyboards[player.uid] = useKeyboard(socket, player.uid)
                     }
                 })
             })
