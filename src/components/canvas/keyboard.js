@@ -1,4 +1,4 @@
-export const useKeyboard = (socket, id) => {
+export const useKeyboard = (socket, id, isEmit) => {
     const keys = {
         ArrowUp: false,
         ArrowDown: false,
@@ -7,11 +7,10 @@ export const useKeyboard = (socket, id) => {
     }
 
     const handler = (e) => {
-        if (socket.id !== id) {
-            return
+        if (isEmit) {
+            socket.emit('key', {type: e.type, key: e.key})
         }
 
-        socket.emit('key', {type: e.type, key: e.key})
 
         let text = e.type +
           ' key=' + e.key +
