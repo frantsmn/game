@@ -7,7 +7,7 @@ export const useKeyboard = (socket, id) => {
     }
 
     const handler = (e) => {
-        if (soket.id !== id) {
+        if (socket.id !== id) {
             return
         }
 
