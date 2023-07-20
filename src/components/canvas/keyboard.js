@@ -7,6 +7,10 @@ export const useKeyboard = (socket, id) => {
     }
 
     const handler = (e) => {
+        if (soket.id !== id) {
+            return
+        }
+
         socket.emit('key', {type: e.type, key: e.key})
 
         let text = e.type +
